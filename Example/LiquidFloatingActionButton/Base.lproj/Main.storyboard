@@ -38,6 +38,9 @@
                             <constraint firstItem="tUY-20-niQ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="ESP-ai-wkO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="myFloatingActionButton" destination="tUY-20-niQ" id="FLO-ot-1xy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

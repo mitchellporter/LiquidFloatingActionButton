@@ -470,8 +470,6 @@ public class LiquidFloatingCell : LiquittableCircle {
 
     // for implement responsible color
     private var originalColor: UIColor
-    private var borderWidth: CGFloat?
-    private var borderColor: CGColor?
     private var brushColor: UIColor?
 
     
@@ -481,32 +479,24 @@ public class LiquidFloatingCell : LiquittableCircle {
         }
     }
 
-    public init(center: CGPoint, radius: CGFloat, color: UIColor, icon: UIImage) {
-        self.originalColor = color
-        super.init(center: center, radius: radius, color: color)
-        setup(icon)
-    }
-
     public init(center: CGPoint, radius: CGFloat, color: UIColor, view: UIView) {
         self.originalColor = color
         super.init(center: center, radius: radius, color: color)
         setupView(view)
     }
     
-    public init(icon: UIImage, color: UIColor, borderWidth: CGFloat, borderColor: CGColor, brushColor: UIColor) {
+    public init(color: UIColor, brushColor: UIColor) {
         self.originalColor = color
-        self.borderWidth = borderWidth
-        self.borderColor = borderColor
         self.brushColor = brushColor
         super.init()
-        setup(icon)
+        setup()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(image: UIImage, tintColor: UIColor = UIColor.whiteColor()) {
+    func setup() {
         brushView.backgroundColor = self.brushColor
         setupView(brushView)
     }

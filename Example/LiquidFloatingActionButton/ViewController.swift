@@ -31,8 +31,10 @@ class ViewController: UIViewController, LiquidFloatingActionButtonDataSource, Li
 //            return floatingActionButton
 //        }
         
+        
+        
         let cellFactory: (String) -> LiquidFloatingCell = { (iconName) in
-            let cell = LiquidFloatingCell(icon: UIImage(named: iconName)!)
+            let cell = LiquidFloatingCell(icon: UIImage(named: iconName)!, color: UIColor.whiteColor(), borderWidth: 2, borderColor: UIColor.whiteColor().CGColor)
             return cell
         }
         cells.append(cellFactory("ic_cloud"))

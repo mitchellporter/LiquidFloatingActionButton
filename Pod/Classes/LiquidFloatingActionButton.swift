@@ -31,7 +31,7 @@ public enum LiquidFloatingActionButtonAnimateStyle : Int {
 public class LiquidFloatingActionButton : UIView {
 
     private let internalRadiusRatio: CGFloat = 20.0 / 56.0
-    public var cellRadiusRatio: CGFloat      = 0.38
+    public var cellRadiusRatio: CGFloat      = 0.5
     public var animateStyle: LiquidFloatingActionButtonAnimateStyle = .Up {
         didSet {
             baseView.animateStyle = animateStyle
@@ -81,6 +81,7 @@ public class LiquidFloatingActionButton : UIView {
     private func insertCell(cell: LiquidFloatingCell) {
         cell.color  = self.color
         cell.radius = self.frame.width * cellRadiusRatio
+        print(cell.radius)
         cell.center = self.center.minus(self.frame.origin)
         cell.actionButton = self
         insertSubview(cell, aboveSubview: baseView)
@@ -461,7 +462,7 @@ class CircleLiquidBaseView : ActionBarBaseView {
 
 public class LiquidFloatingCell : LiquittableCircle {
     
-    let internalRatio: CGFloat = 0.75
+    let internalRatio: CGFloat = 1.0
 
     public var responsible = true
     public var imageView = UIImageView()
@@ -469,6 +470,9 @@ public class LiquidFloatingCell : LiquittableCircle {
 
     // for implement responsible color
     private var originalColor: UIColor
+    private var borderWidth: CGFloat?
+    private var borderColor: CGColor?
+
     
     public override var frame: CGRect {
         didSet {
@@ -476,20 +480,22 @@ public class LiquidFloatingCell : LiquittableCircle {
         }
     }
 
-    init(center: CGPoint, radius: CGFloat, color: UIColor, icon: UIImage) {
+    public init(center: CGPoint, radius: CGFloat, color: UIColor, icon: UIImage) {
         self.originalColor = color
         super.init(center: center, radius: radius, color: color)
         setup(icon)
     }
 
-    init(center: CGPoint, radius: CGFloat, color: UIColor, view: UIView) {
+    public init(center: CGPoint, radius: CGFloat, color: UIColor, view: UIView) {
         self.originalColor = color
         super.init(center: center, radius: radius, color: color)
         setupView(view)
     }
     
-    public init(icon: UIImage) {
-        self.originalColor = UIColor.clearColor()
+    public init(icon: UIImage, color: UIColor, borderWidth: CGFloat, borderColor: CGColor) {
+        self.originalColor = color
+        self.borderWidth = borderWidth
+        self.borderColor = borderColor
         super.init()
         setup(icon)
     }

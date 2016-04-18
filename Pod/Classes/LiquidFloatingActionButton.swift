@@ -520,6 +520,7 @@ public class LiquidFloatingCell : LiquittableCircle {
     private func resizeSubviews() {
         let size = CGSize(width: frame.width * 0.8, height: frame.height * 0.8)
         brushView.frame = CGRect(x: frame.width/2 - size.width/2, y: frame.height/2 - size.height/2, width: size.width, height: size.height)
+        brushView.layer.cornerRadius = brushView.frame.width / 2
         
         // This doesn't work, they end up animating too far down
 //        let size = CGSize(width: 46, height: 46)

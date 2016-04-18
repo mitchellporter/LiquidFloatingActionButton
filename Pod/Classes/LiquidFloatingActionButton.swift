@@ -462,16 +462,17 @@ class CircleLiquidBaseView : ActionBarBaseView {
 
 public class LiquidFloatingCell : LiquittableCircle {
     
-    let internalRatio: CGFloat = 1.0
+    let internalRatio: CGFloat = 0.75
 
     public var responsible = true
-    public var imageView = UIImageView()
+    public var brushView = UIView()
     weak var actionButton: LiquidFloatingActionButton?
 
     // for implement responsible color
     private var originalColor: UIColor
     private var borderWidth: CGFloat?
     private var borderColor: CGColor?
+    private var brushColor: UIColor?
 
     
     public override var frame: CGRect {
@@ -492,10 +493,11 @@ public class LiquidFloatingCell : LiquittableCircle {
         setupView(view)
     }
     
-    public init(icon: UIImage, color: UIColor, borderWidth: CGFloat, borderColor: CGColor) {
+    public init(icon: UIImage, color: UIColor, borderWidth: CGFloat, borderColor: CGColor, brushColor: UIColor) {
         self.originalColor = color
         self.borderWidth = borderWidth
         self.borderColor = borderColor
+        self.brushColor = brushColor
         super.init()
         setup(icon)
     }
@@ -505,9 +507,8 @@ public class LiquidFloatingCell : LiquittableCircle {
     }
     
     func setup(image: UIImage, tintColor: UIColor = UIColor.whiteColor()) {
-        imageView.image = image.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        imageView.tintColor = tintColor
-        setupView(imageView)
+        brushView.backgroundColor = self.brushColor
+        setupView(brushView)
     }
     
     func setupView(view: UIView) {
@@ -517,8 +518,14 @@ public class LiquidFloatingCell : LiquittableCircle {
     }
     
     private func resizeSubviews() {
-        let size = CGSize(width: frame.width * 0.5, height: frame.height * 0.5)
-        imageView.frame = CGRect(x: frame.width - frame.width * internalRatio, y: frame.height - frame.height * internalRatio, width: size.width, height: size.height)
+        let size = CGSize(width: frame.width * 0.8, height: frame.height * 0.8)
+        brushView.frame = CGRect(x: frame.width/2 - size.width/2, y: frame.height/2 - size.height/2, width: size.width, height: size.height)
+        
+        // This doesn't work, they end up animating too far down
+//        let size = CGSize(width: 46, height: 46)
+//        brushView.frame.size = size
+//        brushView.center = self.center
+
     }
     
     func update(key: CGFloat, open: Bool) {

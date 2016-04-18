@@ -12,29 +12,19 @@ import LiquidFloatingActionButton
 class ViewController: UIViewController, LiquidFloatingActionButtonDataSource, LiquidFloatingActionButtonDelegate {
     
     var cells: [LiquidFloatingCell] = []
-    @IBOutlet weak var myFloatingActionButton: LiquidFloatingActionButton!
-    var floatingActionButton: LiquidFloatingActionButton!
+    @IBOutlet weak var floatingActionButton: LiquidFloatingActionButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.view.backgroundColor = UIColor(red: 55 / 255.0, green: 55 / 255.0, blue: 55 / 255.0, alpha: 1.0)
         // Do any additional setup after loading the view, typically from a nib.
         
-        myFloatingActionButton.delegate = self
-        myFloatingActionButton.dataSource = self
-        myFloatingActionButton.animateStyle = .Down
-//        let createButton: (CGRect, LiquidFloatingActionButtonAnimateStyle) -> LiquidFloatingActionButton = { (frame, style) in
-//            let floatingActionButton = LiquidFloatingActionButton(frame: frame)
-//            floatingActionButton.animateStyle = style
-//            floatingActionButton.dataSource = self
-//            floatingActionButton.delegate = self
-//            return floatingActionButton
-//        }
-        
-        
+        floatingActionButton.delegate = self
+        floatingActionButton.dataSource = self
+        floatingActionButton.animateStyle = .Down
         
         let cellFactory: (String) -> LiquidFloatingCell = { (iconName) in
-            let cell = LiquidFloatingCell(icon: UIImage(named: iconName)!, color: UIColor.whiteColor(), borderWidth: 2, borderColor: UIColor.whiteColor().CGColor)
+            let cell = LiquidFloatingCell(icon: UIImage(named: iconName)!, color: UIColor.whiteColor(), borderWidth: 2, borderColor: UIColor.whiteColor().CGColor, brushColor: UIColor.redColor())
             return cell
         }
         cells.append(cellFactory("ic_cloud"))

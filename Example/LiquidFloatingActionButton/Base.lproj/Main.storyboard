@@ -39,7 +39,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="myFloatingActionButton" destination="tUY-20-niQ" id="FLO-ot-1xy"/>
+                        <outlet property="floatingActionButton" destination="tUY-20-niQ" id="Un0-PJ-qSn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

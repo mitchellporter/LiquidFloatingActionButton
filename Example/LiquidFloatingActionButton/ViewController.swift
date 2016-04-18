@@ -23,13 +23,13 @@ class ViewController: UIViewController, LiquidFloatingActionButtonDataSource, Li
         floatingActionButton.dataSource = self
         floatingActionButton.animateStyle = .Down
         
-        let cellFactory: (String) -> LiquidFloatingCell = { (iconName) in
-            let cell = LiquidFloatingCell(color: UIColor.whiteColor(), brushColor: UIColor.redColor())
+        let cellFactory: (UIColor, UIColor) -> LiquidFloatingCell = { (color, brushColor) in
+            let cell = LiquidFloatingCell(color: color, brushColor: brushColor)
             return cell
         }
-        cells.append(cellFactory("ic_cloud"))
-        cells.append(cellFactory("ic_system"))
-        cells.append(cellFactory("ic_place"))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor.redColor()))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor.redColor()))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor.greenColor()))
         
 //        let floatingFrame = CGRect(x: self.view.frame.width - 56 - 16, y: self.view.frame.height - 56 - 16, width: 56, height: 56)
 //        let bottomRightButton = createButton(floatingFrame, .Up)

@@ -27,10 +27,14 @@ class ViewController: UIViewController, LiquidFloatingActionButtonDataSource, Li
             let cell = LiquidFloatingCell(color: color, brushColor: brushColor)
             return cell
         }
-        cells.append(cellFactory(UIColor.whiteColor(), UIColor.redColor()))
-        cells.append(cellFactory(UIColor.whiteColor(), UIColor.redColor()))
-        cells.append(cellFactory(UIColor.whiteColor(), UIColor.greenColor()))
-        
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0.816,  green:0.008,  blue:0.106, alpha:1)))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0.012,  green:0.553,  blue:0.945, alpha:1)))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0.141,  green:0.788,  blue:0.365, alpha:1)))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:1,  green:0.847,  blue:0, alpha:1)))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0.569,  green:0.333,  blue:0.965, alpha:1)))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0,  green:0,  blue:0, alpha:1)))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:1,  green:1,  blue:1, alpha:1)))
+
 //        let floatingFrame = CGRect(x: self.view.frame.width - 56 - 16, y: self.view.frame.height - 56 - 16, width: 56, height: 56)
 //        let bottomRightButton = createButton(floatingFrame, .Up)
 //        

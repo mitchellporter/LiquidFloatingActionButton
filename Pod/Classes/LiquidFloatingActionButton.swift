@@ -280,8 +280,8 @@ class ActionBarBaseView : UIView {
 
 class CircleLiquidBaseView : ActionBarBaseView {
 
-    let openDuration: CGFloat  = 0.6
-    let closeDuration: CGFloat = 0.2
+    let openDuration: CGFloat  = 0.4 // OG: 0.6
+    let closeDuration: CGFloat = 0.2 // OG: 0.2
     let viscosity: CGFloat     = 0.65
     var animateStyle: LiquidFloatingActionButtonAnimateStyle = .Up
     var color: UIColor = UIColor(red: 82 / 255.0, green: 112 / 255.0, blue: 235 / 255.0, alpha: 1.0) {

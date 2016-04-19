@@ -280,7 +280,7 @@ class ActionBarBaseView : UIView {
 
 class CircleLiquidBaseView : ActionBarBaseView {
 
-    let openDuration: CGFloat  = 0.4 // OG: 0.6
+    let openDuration: CGFloat  = 0.2 // OG: 0.6
     let closeDuration: CGFloat = 0.2 // OG: 0.2
     let viscosity: CGFloat     = 0.15 // OG: 0.65
     var animateStyle: LiquidFloatingActionButtonAnimateStyle = .Up
@@ -397,7 +397,7 @@ class CircleLiquidBaseView : ActionBarBaseView {
     }
     
     func updateOpen() {
-        update(0.1, duration: openDuration) { cell, i, ratio in
+        update(0, duration: openDuration) { cell, i, ratio in
             let posRatio = ratio > CGFloat(i) / CGFloat(self.openingCells.count) ? ratio : 0
             let distance = (cell.frame.height * 0.5 + CGFloat(i + 1) * cell.frame.height * 1.5) * posRatio
             cell.center = self.center.plus(self.differencePoint(distance))
@@ -508,15 +508,9 @@ public class LiquidFloatingCell : LiquittableCircle {
     }
     
     private func resizeSubviews() {
-        let size = CGSize(width: frame.width * 0.8, height: frame.height * 0.8)
+        let size = CGSize(width: frame.width * 0.9, height: frame.height * 0.9)
         brushView.frame = CGRect(x: frame.width/2 - size.width/2, y: frame.height/2 - size.height/2, width: size.width, height: size.height)
         brushView.layer.cornerRadius = brushView.frame.width / 2
-        
-        // This doesn't work, they end up animating too far down
-//        let size = CGSize(width: 46, height: 46)
-//        brushView.frame.size = size
-//        brushView.center = self.center
-
     }
     
     func update(key: CGFloat, open: Bool) {

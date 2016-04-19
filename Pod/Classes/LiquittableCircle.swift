@@ -56,7 +56,6 @@ public class LiquittableCircle : UIView {
     
     private func setup() {
         self.frame = CGRect(x: center.x - radius, y: center.y - radius, width: 2 * radius, height: 2 * radius)
-        print(radius)
         drawCircle()
     }
 

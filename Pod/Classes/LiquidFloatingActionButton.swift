@@ -60,7 +60,8 @@ public class LiquidFloatingActionButton : UIView {
             baseView.color = color
         }
     }
-
+    
+    private var imageView: UIImageView?
     private let plusLayer   = CAShapeLayer()
     private let circleLayer = CAShapeLayer()
 
@@ -78,6 +79,11 @@ public class LiquidFloatingActionButton : UIView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+    }
+    
+    public func addIconImageView(iconImageView: UIImageView) {
+        self.imageView = iconImageView
+        self.addSubview(self.imageView!)
     }
 
     private func insertCell(cell: LiquidFloatingCell) {

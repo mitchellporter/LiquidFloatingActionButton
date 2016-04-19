@@ -23,6 +23,10 @@ class ViewController: UIViewController, LiquidFloatingActionButtonDataSource, Li
         floatingActionButton.dataSource = self
         floatingActionButton.animateStyle = .Down
         
+        let imageView = UIImageView(image: UIImage(named: "drawing-button-image"))
+        imageView.frame = CGRectMake(0, 0, 46, 46)
+        floatingActionButton.addIconImageView(imageView)
+        
         let cellFactory: (UIColor, UIColor) -> LiquidFloatingCell = { (color, brushColor) in
             let cell = LiquidFloatingCell(color: color, brushColor: brushColor)
             return cell

@@ -17,6 +17,8 @@ import QuartzCore
 
 @objc public protocol LiquidFloatingActionButtonDelegate {
     // selected method
+    optional func liquidFloatingActionButtonDidOpen(liquidFloatingActionButton: LiquidFloatingActionButton)
+    optional func liquidFloatingActionButtonDidClose(liquidFloatingActionButton: LiquidFloatingActionButton)
     optional func liquidFloatingActionButton(liquidFloatingActionButton: LiquidFloatingActionButton, didSelectItemAtIndex index: Int)
 }
 
@@ -98,6 +100,9 @@ public class LiquidFloatingActionButton : UIView {
 
     // open all cells
     public func open() {
+        // Delegate
+        delegate?.liquidFloatingActionButtonDidOpen?(self)
+        
         // rotate plus icon
         self.plusLayer.addAnimation(plusKeyframe(true), forKey: "plusRot")
         self.plusRotation = CGFloat(M_PI * 0.25) // 45 degree
@@ -113,6 +118,9 @@ public class LiquidFloatingActionButton : UIView {
 
     // close all cells
     public func close() {
+        // Delegate
+        delegate?.liquidFloatingActionButtonDidClose?(self)
+        
         // rotate plus icon
         self.plusLayer.addAnimation(plusKeyframe(false), forKey: "plusRot")
         self.plusRotation = 0

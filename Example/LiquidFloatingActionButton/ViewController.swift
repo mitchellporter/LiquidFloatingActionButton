@@ -58,6 +58,14 @@ class ViewController: UIViewController, LiquidFloatingActionButtonDataSource, Li
         return cells[index]
     }
     
+    func liquidFloatingActionButtonDidOpen(liquidFloatingActionButton: LiquidFloatingActionButton) {
+        
+    }
+    
+    func liquidFloatingActionButtonDidClose(liquidFloatingActionButton: LiquidFloatingActionButton) {
+        
+    }
+    
     func liquidFloatingActionButton(liquidFloatingActionButton: LiquidFloatingActionButton, didSelectItemAtIndex index: Int) {
         print("did Tapped! \(index)")
         floatingActionButton.close()

@@ -50,6 +50,8 @@ class ViewController: UIViewController, LiquidFloatingActionButtonDataSource, Li
     }
     
     func cellForIndex(index: Int) -> LiquidFloatingCell {
+//        let cell = cells[index]
+//        cell.imageView.alpha
         return cells[index]
     }
     
@@ -63,7 +65,7 @@ class ViewController: UIViewController, LiquidFloatingActionButtonDataSource, Li
     
     func liquidFloatingActionButton(liquidFloatingActionButton: LiquidFloatingActionButton, didSelectItemAtIndex index: Int) {
         print("did Tapped! \(index)")
-        floatingActionButton.close()
+//        floatingActionButton.close()
     }
     
     

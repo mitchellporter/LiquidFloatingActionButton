@@ -54,6 +54,8 @@ public class LiquidFloatingActionButton : UIView {
             return plusRotation == 0
         }
     }
+    
+    public var selectedCellIndex = 0
 
     @IBInspectable public var color: UIColor = UIColor(red: 82 / 255.0, green: 112 / 255.0, blue: 235 / 255.0, alpha: 1.0) {
         didSet {
@@ -114,6 +116,13 @@ public class LiquidFloatingActionButton : UIView {
         self.plusRotation = CGFloat(M_PI * 0.25) // 45 degree
 
         let cells = cellArray()
+        for i in 0..<cells.count {
+            if i == selectedCellIndex {
+                let cell = cells[i]
+                cell.imageView.alpha = 1.0
+            }
+        }
+
         for cell in cells {
             insertCell(cell)
         }
@@ -267,7 +276,11 @@ public class LiquidFloatingActionButton : UIView {
             for i in 0..<cells.count {
                 let cell = cells[i]
                 if target === cell {
+                    self.selectedCellIndex = i
+                    cell.imageView.alpha = 1.0
                     delegate?.liquidFloatingActionButton?(self, didSelectItemAtIndex: i)
+                } else {
+                    cell.imageView.alpha = 0.0
                 }
             }
         }
@@ -354,6 +367,7 @@ class CircleLiquidBaseView : ActionBarBaseView {
         displayLink = CADisplayLink(target: self, selector: Selector("didDisplayRefresh:"))
         displayLink?.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
         for cell in cells {
+            
             cell.layer.removeAllAnimations()
             cell.layer.eraseShadow()
             openingCells.append(cell)
@@ -503,6 +517,7 @@ public class LiquidFloatingCell : LiquittableCircle {
         self.originalColor = color
         self.brushColor = brushColor
         self.imageView.image = image
+        self.imageView.alpha = 0.0
         super.init()
         setup()
     }
@@ -530,14 +545,15 @@ public class LiquidFloatingCell : LiquittableCircle {
         brushView.frame = CGRect(x: frame.width/2 - brushViewSize.width/2, y: frame.height/2 - brushViewSize.height/2, width: brushViewSize.width, height: brushViewSize.height)
         brushView.layer.cornerRadius = brushView.frame.width / 2
         imageView.frame = CGRect(x: frame.width/2 - imageViewSize.width/2, y: frame.height/2 - imageViewSize.height/2, width: imageViewSize.width, height: imageViewSize.height)
-//        imageView.layer.cornerRadius = brushView.frame.width / 2
     }
     
     func update(key: CGFloat, open: Bool) {
         for subview in self.subviews {
             if let view = subview as? UIView {
                 let ratio = max(2 * (key * key - 0.5), 0)
-                view.alpha = open ? ratio : -ratio
+                if view != imageView {
+                    view.alpha = open ? ratio : -ratio
+                }
             }
         }
     }

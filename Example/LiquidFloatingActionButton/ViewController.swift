@@ -27,26 +27,17 @@ class ViewController: UIViewController, LiquidFloatingActionButtonDataSource, Li
         imageView.frame = CGRectMake(0, 0, 46, 46)
         floatingActionButton.addIconImageView(imageView)
         
-        let cellFactory: (UIColor, UIColor) -> LiquidFloatingCell = { (color, brushColor) in
-            let cell = LiquidFloatingCell(color: color, brushColor: brushColor)
+        let cellFactory: (UIColor, UIColor, UIImage) -> LiquidFloatingCell = { (color, brushColor, image) in
+            let cell = LiquidFloatingCell(color: color, brushColor: brushColor, image: image)
             return cell
         }
-        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0.816,  green:0.008,  blue:0.106, alpha:1)))
-        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0.012,  green:0.553,  blue:0.945, alpha:1)))
-        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0.141,  green:0.788,  blue:0.365, alpha:1)))
-        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:1,  green:0.847,  blue:0, alpha:1)))
-        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0.569,  green:0.333,  blue:0.965, alpha:1)))
-        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0,  green:0,  blue:0, alpha:1)))
-        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:1,  green:1,  blue:1, alpha:1)))
-
-//        let floatingFrame = CGRect(x: self.view.frame.width - 56 - 16, y: self.view.frame.height - 56 - 16, width: 56, height: 56)
-//        let bottomRightButton = createButton(floatingFrame, .Up)
-//        
-//        let floatingFrame2 = CGRect(x: 16, y: 16, width: 56, height: 56)
-//        let topLeftButton = createButton(floatingFrame2, .Down)
-
-//        self.view.addSubview(bottomRightButton)
-//        self.view.addSubview(topLeftButton)
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0.816,  green:0.008,  blue:0.106, alpha:1), UIImage(named: "checkmark-button-image")!))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0.012,  green:0.553,  blue:0.945, alpha:1), UIImage(named: "checkmark-button-image")!))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0.141,  green:0.788,  blue:0.365, alpha:1), UIImage(named: "checkmark-button-image")!))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:1,  green:0.847,  blue:0, alpha:1), UIImage(named: "checkmark-button-image")!))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0.569,  green:0.333,  blue:0.965, alpha:1), UIImage(named: "checkmark-button-image")!))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:0,  green:0,  blue:0, alpha:1), UIImage(named: "checkmark-button-image")!))
+        cells.append(cellFactory(UIColor.whiteColor(), UIColor(red:1,  green:1,  blue:1, alpha:1), UIImage(named: "checkmark-button-image")!))
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,5 +65,6 @@ class ViewController: UIViewController, LiquidFloatingActionButtonDataSource, Li
         print("did Tapped! \(index)")
         floatingActionButton.close()
     }
-
+    
+    
 }

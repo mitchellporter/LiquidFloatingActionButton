@@ -479,6 +479,7 @@ public class LiquidFloatingCell : LiquittableCircle {
 
     public var responsible = true
     public var brushView = UIView()
+    public var imageView = UIImageView()
     weak var actionButton: LiquidFloatingActionButton?
 
     // for implement responsible color
@@ -498,9 +499,10 @@ public class LiquidFloatingCell : LiquittableCircle {
         setupView(view)
     }
     
-    public init(color: UIColor, brushColor: UIColor) {
+    public init(color: UIColor, brushColor: UIColor, image: UIImage) {
         self.originalColor = color
         self.brushColor = brushColor
+        self.imageView.image = image
         super.init()
         setup()
     }
@@ -512,6 +514,7 @@ public class LiquidFloatingCell : LiquittableCircle {
     func setup() {
         brushView.backgroundColor = self.brushColor
         setupView(brushView)
+        setupView(imageView)
     }
     
     func setupView(view: UIView) {
@@ -521,9 +524,13 @@ public class LiquidFloatingCell : LiquittableCircle {
     }
     
     private func resizeSubviews() {
-        let size = CGSize(width: frame.width * 0.9, height: frame.height * 0.9)
-        brushView.frame = CGRect(x: frame.width/2 - size.width/2, y: frame.height/2 - size.height/2, width: size.width, height: size.height)
+        let brushViewSize = CGSize(width: frame.width * 0.9, height: frame.height * 0.9)
+        let imageViewSize = CGSize(width: frame.width * 0.4, height: frame.height * 0.4)
+
+        brushView.frame = CGRect(x: frame.width/2 - brushViewSize.width/2, y: frame.height/2 - brushViewSize.height/2, width: brushViewSize.width, height: brushViewSize.height)
         brushView.layer.cornerRadius = brushView.frame.width / 2
+        imageView.frame = CGRect(x: frame.width/2 - imageViewSize.width/2, y: frame.height/2 - imageViewSize.height/2, width: imageViewSize.width, height: imageViewSize.height)
+//        imageView.layer.cornerRadius = brushView.frame.width / 2
     }
     
     func update(key: CGFloat, open: Bool) {
